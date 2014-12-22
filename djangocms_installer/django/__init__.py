@@ -39,7 +39,7 @@ def create_project(config_data):
         args.append(config_data.project_directory)
         if not os.path.exists(config_data.project_directory):
             os.makedirs(config_data.project_directory)
-    subprocess.check_call(['django-admin.py', 'startproject'] + args)
+    subprocess.check_call(['django-admin', 'startproject'] + args)
 
 
 def copy_files(config_data):
