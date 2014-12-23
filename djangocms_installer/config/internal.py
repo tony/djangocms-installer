@@ -28,13 +28,17 @@ def validate_project(project_name):
     modules to avoid name clashing
     """
     if '-' in project_name:
+        print "woring"
         return None
     if keyword.iskeyword(project_name):
+        print "kw"
         return None
     if project_name in dir(__builtins__):
+        print "build"
         return None
     try:
-        __import__(project_name)
+        x = __import__(project_name)
+        print "import", x
         return None
     except ImportError:
         return project_name
