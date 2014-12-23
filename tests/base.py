@@ -86,4 +86,5 @@ class IsolatedTestClass(BaseTestClass):
                 with open(activate_temp) as f:
                     code = compile(f.read(), activate_temp, 'exec')
                 exec(code, dict(__file__=activate_temp))
+            subprocess.check_call(['pip', 'install' 'pip==1.5.6'])
             sys.executable = os.path.join(self.virtualenv_dir, 'bin', 'python')
