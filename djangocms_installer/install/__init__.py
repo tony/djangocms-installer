@@ -58,6 +58,7 @@ def requirements(requirements, is_file=False):
     else:
         args = ['install', '-q']
         args.extend(requirements.split())
+    print(args)
     exit_status = pip.main(args)
     if exit_status != SUCCESS:
         raise InstallationError("Error while installing requirements. Check pip log file for error details.")

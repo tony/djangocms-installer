@@ -23,7 +23,8 @@ class BaseTestClass(unittest.TestCase):
 
     def _remove_project_dir(self):
         if self.project_dir and os.path.exists(self.project_dir):
-            shutil.rmtree(self.project_dir)
+            #shutil.rmtree(self.project_dir)
+            print self.project_dir
             self.project_dir = None
 
     def _create_project_dir(self):
@@ -55,7 +56,8 @@ class IsolatedTestClass(BaseTestClass):
     def _remove_project_dir(self):
         super(IsolatedTestClass, self)._remove_project_dir()
         if self.virtualenv_dir:
-            shutil.rmtree(self.virtualenv_dir)
+            #shutil.rmtree(self.virtualenv_dir)
+            print self.virtualenv_dir
             self.virtualenv_dir = None
 
     def _create_project_dir(self):
@@ -84,4 +86,5 @@ class IsolatedTestClass(BaseTestClass):
                 with open(activate_temp) as f:
                     code = compile(f.read(), activate_temp, 'exec')
                 exec(code, dict(__file__=activate_temp))
+            subprocess.check_call(['pip', 'install', 'pip==1.5.6'])
             sys.executable = os.path.join(self.virtualenv_dir, 'bin', 'python')
